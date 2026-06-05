@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>booeb.com - Bangladesh's Biggest Online Shopping</title>
+<meta name="description" content="Buy mobiles, fashion, electronics at best price. Free delivery with Prime.">
+<style>
+:root{--royal:#2563EB;--teal:#14B8A6;--amber:#F59E0B;--dark:#0F172A;--light:#F8FAFC;--gray:#64748B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--light);color:#1e293b;line-height:1.5;transition:.3s}
+body.dark{background:#0b1220;color:#e2e8f0}
+header{position:sticky;top:0;z-index:100;background:linear-gradient(90deg,var(--royal),#1d4ed8);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.topbar{display:flex;align-items:center;gap:12px;padding:10px 16px;max-width:1280px;margin:auto;flex-wrap:wrap}
+.logo{font-weight:800;font-size:24px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.logo span{background:var(--amber);color:#000;padding:2px 6px;border-radius:4px;font-size:14px}
+.search{flex:1;display:flex;background:#fff;border-radius:8px;overflow:hidden;min-width:200px}
+.search input{flex:1;border:none;padding:12px 14px;font-size:15px;outline:none;color:#000}
+.search button{background:var(--amber);border:none;padding:0 18px;cursor:pointer;font-weight:600}
+.voice-btn{background:var(--teal)!important;color:#fff;padding:0 12px;border:none;cursor:pointer;font-size:18px}
+.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{background:#fff;color:var(--royal);border:none;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{transform:translateY(-1px)}
+.btn.amber{background:var(--amber);color:#000}
+.btn.teal{background:var(--teal);color:#fff}
+.badge{background:var(--amber);color:#000;font-size:11px;padding:2px 6px;border-radius:10px;margin-left:4px}
+nav{background:var(--dark);color:#cbd5e1;font-size:14px}
+.nav-inner{max-width:1280px;margin:auto;display:flex;gap:20px;padding:8px 16px;overflow:auto}
+.nav-inner a{color:inherit;text-decoration:none;white-space:nowrap}
+.hero{max-width:1280px;margin:16px auto;padding:0 16px}
+.hero-box{background:linear-gradient(135deg,var(--royal),var(--teal));border-radius:16px;color:#fff;padding:32px}
+.hero h1{font-size:28px;margin-bottom:8px}
+.container{max-width:1280px;margin:0 auto;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;transition:.2s;display:flex;flex-direction:column}
+body.dark .card{background:#1e293b}
+.card:hover{transform:translateY(-3px)}
+.card img{width:100%;height:180px;object-fit:cover;background:#f1f5f9}
+.card-body{padding:12px;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:14px;font-weight:600;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-clamp:2}
+.price{color:var(--royal);font-weight:700;font-size:18px;margin-top:auto}
+.price small{color:var(--gray);text-decoration:line-through;font-size:13px;margin-left:6px}
+.prime-badge{background:linear-gradient(90deg,var(--royal),var(--amber));color:#fff;padding:2px 6px;border-radius:4px;font-size:11px;margin-top:4px;display:inline-block}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:16px}
+.modal-content{background:#fff;border-radius:16px;max-width:900px;width:100%;max-height:90vh;overflow:auto}
+body.dark .modal-content{background:#0f172a}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid #e2e8f0}
+.modal-head h3{font-size:20px}
+.close{font-size:28px;cursor:pointer}
+.modal-body{padding:16px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px}
+body.dark input,body.dark select,body.dark textarea{background:#1e293b;color:#fff;border-color:#475569}
+.full{grid-column:span 2}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0}
+.cart-item img{width:80px;height:80px;object-fit:cover;border-radius:8px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:28px;height:28px;border:1px solid #cbd5e1;background:#fff;border-radius:6px;cursor:pointer}
+.chat-btn{position:fixed;bottom:20px;right:20px;background:var(--royal);color:#fff;border:none;border-radius:50px;padding:12px 18px;cursor:pointer;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.2);font-weight:600}
+.chat-box{position:fixed;bottom:80px;right:20px;width:300px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.2);display:none;z-index:300;overflow:hidden}
+body.dark .chat-box{background:#1e293b}
+.chat-head{background:var(--royal);color:#fff;padding:10px 12px;font-weight:600}
+.chat-body{height:200px;overflow:auto;padding:10px;font-size:13px}
+.ar-wrap{position:relative;background:#000;border-radius:12px;overflow:hidden}
+.ar-video{width:100%;height:300px;object-fit:cover}
+.ar-overlay{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);width:180px;pointer-events:none}
+.crypto-box{background:#f8fafc;border:1px dashed var(--teal);padding:12px;border-radius:8px;text-align:center;margin-top:10px}
+body.dark .crypto-box{background:#0f172a}
+footer{margin-top:40px;background:var(--dark);color:#94a3b8;padding:32px 16px;text-align:center}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}.full{grid-column:span 1}}
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="logo" onclick="location.reload()">booeb<span>.com</span></div>
+    <div class="search"><input id="searchInput" placeholder="Search products..."><button class="voice-btn" onclick="voiceSearch()">🎤</button><button>🔍</button></div>
+    <div class="actions">
+      <button class="btn" onclick="toggleDark()">🌙</button>
+      <button class="btn amber" onclick="window.location.href='admin-login.html'" title="Admin Gateway">🔐 Admin Gateway</button>
+      <button class="btn" id="loginBtn" onclick="openLogin()">Login</button>
+      <button class="btn" onclick="showMyOrders()">Orders</button>
+      <button class="btn" onclick="openCart()">Cart <span class="badge" id="cartCount">0</span></button>
+      <button class="btn" onclick="togglePrime()">PRIME</button>
+    </div>
+  <nav><div class="nav-inner"><a href="#">Electronics</a><a href="#">Fashion</a><a href="#">Home</a><a href="#">Prime Deals</a></div></nav>
+</header>
+
+<div class="hero"><div class="hero-box"><h1>booeb.com এ স্বাগতম</h1><p>৩২টি প্রো ফিচার সহ বাংলাদেশের সবচেয়ে বড় শপিং সাইট</p></div></div>
+
+<div class="container">
+  <div class="section-title"><h2>Featured Products</h2></div>
+  <div class="grid" id="productGrid"></div>
+</div>
+
+<!-- Modals -->
+<div id="productModal" class="modal"><div class="modal-content"><div class="modal-head"><h3>Product</h3><span class="close" onclick="closeModal('productModal')">&times;</span></div><div class="modal-body" id="pBody"></div></div></div>
+<div id="cartModal" class="modal"><div class="modal-content"><div class="modal-head"><h3>Shopping Cart</h3><span class="close" onclick="closeModal('cartModal')">&times;</span></div><div class="modal-body" id="cartBody"></div></div></div>
+<div id="checkoutModal" class="modal"><div class="modal-content"><div class="modal-head"><h3>Checkout</h3><span class="close" onclick="closeModal('checkoutModal')">&times;</span></div><div class="modal-body" id="checkoutBody"></div></div></div>
+<div id="loginModal" class="modal"><div class="modal-content" style="max-width:400px"><div class="modal-head"><h3>Login</h3><span class="close" onclick="closeModal('loginModal')">&times;</span></div><div class="modal-body"><input id="loginEmail" placeholder="Email"><button class="btn amber full" style="margin-top:10px" onclick="doLogin()">Login with OTP</button><p style="font-size:12px;margin-top:8px">Demo OTP: 1234</p></div></div></div>
+
+<button class="chat-btn" onclick="toggleChat()">💬 Chat</button>
+<div class="chat-box" id="chatBox"><div class="chat-head">AI Assistant</div><div class="chat-body" id="chatBody"></div><div style="display:flex;padding:8px"><input id="chatIn" style="flex:1;margin-right:6px" placeholder="Ask..."><button class="btn" onclick="sendChat()">Send</button></div></div>
+
+<footer><div style="max-width:1280px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:16px">
+<div><h4 style="color:var(--amber);margin-bottom:12px">About</h4><p style="font-size:13px">Bangladesh's #1 online shopping platform with 32 features</p></div>
+<div><h4 style="color:var(--amber);margin-bottom:12px">Support</h4><p style="font-size:13px">📧 support@booeb.com<br>📞 +880-2-123-4567<br>⏰ 9 AM - 10 PM</p></div>
+<div><h4 style="color:var(--amber);margin-bottom:12px">Quick Links</h4><p style="font-size:13px"><a href="#" style="color:inherit;text-decoration:none">Privacy Policy</a><br><a href="#" style="color:inherit;text-decoration:none">Terms of Service</a><br><a href="admin-login.html" style="color:var(--royal);text-decoration:none;font-weight:600">🔐 Admin Gateway</a></p></div>
+<div><h4 style="color:var(--amber);margin-bottom:12px">Follow Us</h4><div id="socialLinks" style="display:flex;gap:12px;flex-wrap:wrap"></div></div>
+</div><div style="text-align:center;padding:16px;border-top:1px solid #e2e8f0;color:var(--gray);font-size:12px">© 2026 booeb.com - Commerce Platform | <span style="color:var(--royal)">Royal Blue</span> • <span style="color:var(--teal)">Teal</span> • <span style="color:var(--amber)">Amber</span></div>
+</footer>
+
+<script>
+// === COMPLETE JS v32 ===
+const STORE={products:[{id:1,title:"Samsung Galaxy S24",price:89900,old:99900,img:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400",category:"Electronics",rating:4.5},{id:2,title:"Men's Casual Shirt",price:1290,old:1890,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400",category:"Fashion",rating:4.2},{id:3,title:"Wireless Headphones",price:3490,img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",category:"Electronics",rating:4.7},{id:4,title:"Running Shoes",price:2590,old:3290,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",category:"Fashion",rating:4.3},{id:5,title:"Smart Watch",price:5990,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",category:"Electronics",rating:4.6},{id:6,title:"Backpack",price:1890,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",category:"Fashion",rating:4.1}],cart:JSON.parse(localStorage.getItem('booeb_cart'))||[],user:JSON.parse(localStorage.getItem('booeb_user'))||null,orders:JSON.parse(localStorage.getItem('booeb_orders'))||[],prime:localStorage.getItem('booeb_prime')==='true',reviews:JSON.parse(localStorage.getItem('booeb_reviews'))||{}};
+function save(){localStorage.setItem('booeb_cart',JSON.stringify(STORE.cart));localStorage.setItem('booeb_user',JSON.stringify(STORE.user));localStorage.setItem('booeb_orders',JSON.stringify(STORE.orders));updateCounts()}
+function updateCounts(){cartCount.textContent=STORE.cart.reduce((s,i)=>s+i.qty,0)}
+function renderProducts(list=STORE.products){productGrid.innerHTML=list.map(p=>`<div class="card" onclick="viewProduct(${p.id})"><img src="${p.img}"><div class="card-body"><div class="card-title">${p.title}</div><div class="price">৳${p.price.toLocaleString()}${p.old?`<small>৳${p.old.toLocaleString()}</small>`:''}</div>${STORE.prime?'<span class="prime-badge">PRIME</span>':''}</div></div>`).join('')}
+renderProducts();updateCounts();
+searchInput.oninput=e=>{const q=e.target.value.toLowerCase();renderProducts(STORE.products.filter(p=>p.title.toLowerCase().includes(q)))};
+function voiceSearch(){const r=new (window.SpeechRecognition||window.webkitSpeechRecognition)();r.lang='bn-BD';r.onresult=e=>{searchInput.value=e.results[0][0].transcript;searchInput.dispatchEvent(new Event('input'))};r.start()}
+function viewProduct(id){const p=STORE.products.find(x=>x.id===id);pBody.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><img src="${p.img}" style="width:100%;border-radius:12px"><div><h2>${p.title}</h2><p>Rating: ${p.rating}★</p><div class="price" style="font-size:26px;margin:12px 0">৳${p.price.toLocaleString()}</div><button class="btn amber" onclick="addToCart(${p.id});closeModal('productModal')">Add to Cart</button> <button class="btn" onclick="buyNow(${p.id})">Buy Now</button> <button class="btn teal" onclick="openAR('${p.img}')" style="margin-top:8px">👓 AR Try-On</button><div id="revSec" style="margin-top:20px"><h4>Reviews</h4><div id="revList"></div><textarea id="revText" placeholder="Write review"></textarea><button class="btn" onclick="addRev(${id})">Post</button></div></div></div>`;productModal.style.display='flex';loadRev(id)}
+function loadRev(id){revList.innerHTML=(STORE.reviews[id]||[]).map(r=>`<div style="padding:4px 0;border-bottom:1px solid #eee"><b>${r.user}:</b> ${r.txt}</div>`).join('')}
+function addRev(id){const t=revText.value;if(!t)return;(STORE.reviews[id]=STORE.reviews[id]||[]).push({txt:t,user:STORE.user?.name||'Guest'});localStorage.setItem('booeb_reviews',JSON.stringify(STORE.reviews));loadRev(id);revText.value=''}
+function addToCart(id){const f=STORE.cart.find(i=>i.id===id);f?f.qty++:STORE.cart.push({id,qty:1});save();alert('Added!')}
+function buyNow(id){addToCart(id);openCart()}
+function openCart(){cartModal.style.display='flex';renderCart()}
+function renderCart(){if(!STORE.cart.length){cartBody.innerHTML='<p>Empty</p>';return}const total=STORE.cart.reduce((s,it)=>s+STORE.products.find(p=>p.id===it.id).price*it.qty,0);cartBody.innerHTML=STORE.cart.map(it=>{const p=STORE.products.find(x=>x.id===it.id);return`<div class="cart-item"><img src="${p.img}"><div style="flex:1"><b>${p.title}</b><div class="qty"><button onclick="chgQty(${it.id},-1)">-</button><span>${it.qty}</span><button onclick="chgQty(${it.id},1)">+</button></div></div><div>৳${(p.price*it.qty).toLocaleString()}</div></div>`}).join('')+`<div style="text-align:right;margin-top:12px"><h3>Total: ৳${total.toLocaleString()}</h3><button class="btn amber" onclick="checkout()">Checkout</button></div>`}
+function chgQty(id,d){const it=STORE.cart.find(i=>i.id===id);it.qty+=d;if(it.qty<1)STORE.cart=STORE.cart.filter(i=>i.id!==id);save();renderCart()}
+function checkout(){if(!STORE.user)return openLogin();closeModal('cartModal');checkoutModal.style.display='flex';const total=STORE.cart.reduce((s,it)=>s+STORE.products.find(p=>p.id===it.id).price*it.qty,0);window._total=total+60;checkoutBody.innerHTML=`<div class="form-grid"><input id="coName" placeholder="Name" value="${STORE.user.name||''}"><input id="coPhone" placeholder="Phone"><input id="coAddr" placeholder="Address" class="full"><select id="coPay"><option>COD</option><option>bKash</option><option>Card</option><option>Crypto</option></select><div class="full"><h4>Summary</h4><p>Total: ৳${window._total.toLocaleString()} ${STORE.prime?'(Prime -60)':''}</p></div><button class="btn amber full" onclick="placeOrder()">Place Order</button><div id="cryptoBox"></div></div>`;if(STORE.prime)window._total-=60}
+function placeOrder(){const pay=coPay.value;if(pay==='Crypto'){const addr='0xBooeb'+Math.random().toString(16).slice(2,8).toUpperCase();cryptoBox.innerHTML=`<div class="crypto-box"><p>Pay $${(window._total/110).toFixed(2)} USDT</p><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${addr}"><p style="font-family:monospace">${addr}</p><button class="btn" onclick="confirmOrder()">I Paid</button></div>`;return}confirmOrder()}
+function confirmOrder(){STORE.orders.push({id:Date.now(),user:STORE.user.email,items:[...STORE.cart],total:window._total,date:new Date().toLocaleString()});STORE.cart=[];save();closeModal('checkoutModal');alert('Order confirmed!');}
+function openLogin(){loginModal.style.display='flex'}
+function doLogin(){const e=loginEmail.value;const o=prompt('OTP: 1234');if(o==='1234'){STORE.user={email:e,name:e.split('@')[0]};save();closeModal('loginModal');loginBtn.textContent=STORE.user.name}}
+function showMyOrders(){if(!STORE.user)return openLogin();const o=STORE.orders.filter(x=>x.user===STORE.user.email);alert(o.length?o.map(x=>`#${x.id} ৳${x.total}`).join('\n'):'No orders')}
+function toggleDark(){document.body.classList.toggle('dark');localStorage.setItem('booeb_dark',document.body.classList.contains('dark'))}
+if(localStorage.getItem('booeb_dark')==='true')document.body.classList.add('dark')
+function togglePrime(){STORE.prime=!STORE.prime;localStorage.setItem('booeb_prime',STORE.prime);location.reload()}
+function toggleChat(){chatBox.style.display=chatBox.style.display==='block'?'none':'block'}
+function sendChat(){const t=chatIn.value;if(!t)return;chatBody.innerHTML+=`<div><b>You:</b> ${t}</div>`;chatIn.value='';let a='আমি সাহায্য করব';if(t.includes('order'))a=`আপনার ${STORE.orders.length} অর্ডার`;else if(t.includes('delivery'))a=STORE.prime?'Free delivery':'৳60';setTimeout(()=>{chatBody.innerHTML+=`<div><b>booeb.com:</b> ${a}</div>`;chatBody.scrollTop=9999},400)}
+async function openAR(img){const m=document.createElement('div');m.className='modal';m.style.display='flex';m.innerHTML=`<div class="modal-content"><div class="modal-head"><h3>AR Try-On</h3><span class="close" onclick="this.closest('.modal').remove()">&times;</span></div><div class="modal-body"><div class="ar-wrap"><video class="ar-video" autoplay playsinline id="arV"></video><img class="ar-overlay" src="${img}"></div></div></div>`;document.body.appendChild(m);try{document.getElementById('arV').srcObject=await navigator.mediaDevices.getUserMedia({video:true})}catch(e){alert('Camera allow করুন')}}
+function closeModal(id){document.getElementById(id).style.display='none'}
+if(STORE.user)loginBtn.textContent=STORE.user.name
+</script>
+</body>
+</html>
